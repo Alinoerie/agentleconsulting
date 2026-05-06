@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const cases = [
+  {
+    client: 'HomeGoods NL',
+    industry: 'Home Accessories',
+    platform: 'Bol.com',
+    challenge: 'Processing 180 orders/day manually — 3.5 hours of admin per day',
+    solution: 'Automated order routing + inventory sync across 3 suppliers',
+    results: ['3.5 → 0.5 hours/day admin', 'Zero stockout incidents in 6 months', 'Order error rate dropped 94%'],
+    slug: 'homegoods-nl',
+    tag: 'Bol.com',
+  },
+  {
+    client: 'KitchenPro DE',
+    industry: 'Kitchen Equipment',
+    platform: 'Amazon DE + FR',
+    challenge: 'Multi-marketplace repricing impossible to manage manually',
+    solution: '24/7 repricing automation across 2 marketplaces',
+    results: ['Buy box win rate up 23%', 'Average margin improvement of 8%', 'First vacation in 2 years'],
+    slug: 'kitchenpro-de',
+    tag: 'Amazon',
+  },
+  {
+    client: 'ScaleUp BV',
+    industry: 'Electronics Accessories',
+    platform: 'Amazon NL + Bol.com',
+    challenge: 'Expanding to second marketplace with no additional headcount',
+    solution: 'Cross-platform inventory sync + order processing pipeline',
+    results: ['Second marketplace live in 3 weeks', '200+ orders/day handled at 95% accuracy', '+€180K incremental revenue in 90 days'],
+    slug: 'scaleup-bv',
+    tag: 'Multi-Channel',
+  },
+];
+---
+
+<Layout title="Case Studies — AgentleConsulting"
+  description="Real results for real Amazon and Bol.com sellers. See how we automate operations and give sellers their time back.">
+
+  <!-- HERO -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="container-site max-w-3xl">
+      <p class="section-label">Case Studies</p>
+      <h1 class="font-heading font-bold text-4xl md:text-5xl text-slate mb-4">
+        Results Speak for Themselves
+      </h1>
+      <p class="text-lg text-slate/60">
+        Real sellers. Real workflows. Measurable outcomes.
+      </p>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES GRID -->
+  <section class="bg-stone py-16 md:py-24">
+    <div class="container-site">
+      <div class="space-y-8 max-w-5xl">
+        {cases.map(cs => (
+          <a href={`/case-studies/${cs.slug}`}
+             class="group block bg-cream rounded-2xl p-8 md:p-10 border border-stone hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
+              <!-- Left: meta -->
+              <div class="md:w-48 shrink-0">
+                <span class="text-xs font-semibold px-3 py-1 bg-sage/10 text-sage rounded-full">{cs.tag}</span>
+                <div class="mt-4">
+                  <p class="font-heading font-bold text-xl text-slate">{cs.client}</p>
+                  <p class="text-sm text-slate/50 mt-1">{cs.industry}</p>
+                  <p class="text-xs text-slate/40 mt-2">{cs.platform}</p>
+                </div>
+              </div>
+
+              <!-- Right: content -->
+              <div class="flex-1">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate/40 mb-2">Challenge</p>
+                    <p class="text-sm text-slate/70 leading-relaxed">{cs.challenge}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate/40 mb-2">Solution</p>
+                    <p class="text-sm text-slate/70 leading-relaxed">{cs.solution}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-sage mb-2">Results</p>
+                    <ul class="space-y-1">
+                      {cs.results.map(r => (
+                        <li class="text-sm text-slate/70 flex items-start gap-1.5">
+                          <svg class="w-4 h-4 text-sage mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                          {r}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <p class="text-sm text-sage font-medium mt-6 group-hover:text-sage-dark transition-colors">Read full case study →</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-sage py-16">
+    <div class="container-site text-center">
+      <h2 class="font-heading font-bold text-3xl text-pearl mb-4">Want results like these?</h2>
+      <p class="text-pearl/70 mb-8 max-w-md mx-auto">Book a discovery call and let's talk about your specific workflow.</p>
+      <a href="/contact" class="btn-primary text-base">Book a Free Discovery Call →</a>
+    </div>
+  </section>
+</Layout>

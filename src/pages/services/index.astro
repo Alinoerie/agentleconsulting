@@ -1,0 +1,278 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const tiers = [
+  {
+    id: 'discover',
+    name: 'Discover',
+    price: '€1,500',
+    duration: '5 Days',
+    badge: 'START HERE',
+    badgeColor: 'bg-sage/10 text-sage',
+    bg: 'bg-cream',
+    accentColor: 'text-sage',
+    cta: 'Book Discovery Sprint',
+    description: "Not sure where to start? We'll audit your current workflow, identify your highest-ROI automation opportunities, and deliver a step-by-step roadmap you can implement yourself or with our help.",
+    included: [
+      'Full workflow audit (up to 10 workflows reviewed)',
+      'Prioritized automation roadmap (PDF)',
+      'Live walkthrough call (60 min)',
+      'Technical spec for top 3 automations (if you DIY)',
+      '30-day email follow-up support',
+    ],
+    whoFor: 'Sellers doing 50–200 orders/day who know they need automation but haven\'t mapped their workflow.',
+  },
+  {
+    id: 'automate',
+    name: 'Automate',
+    price: '€4,500–7,500',
+    duration: '2–4 Weeks',
+    badge: 'MOST POPULAR',
+    badgeColor: 'bg-amber/10 text-amber',
+    bg: 'bg-stone',
+    accentColor: 'text-amber',
+    cta: 'Start Automating',
+    description: "We build and deliver 1–3 core automations. You approve, we build, you see them working before we hand over.",
+    included: [
+      'Discovery Sprint (workflow audit + roadmap)',
+      '1–3 core workflows built + sandbox tested',
+      'Live demo + handover session',
+      'Documentation (runbook for your team)',
+      '30-day bug-fix SLA post-handover',
+      'n8n/Make license setup included',
+    ],
+    whoFor: 'Sellers with 1–3 specific bottlenecks that are costing them hours every day.',
+    examples: [
+      'Order processing: Amazon → warehouse (auto)',
+      'Inventory sync: stock levels across all listings',
+      'Review request: automated post-purchase email sequence',
+      'Repricing: competitor price monitoring + auto-adjust',
+    ],
+  },
+  {
+    id: 'transform',
+    name: 'Transform',
+    price: '€12,000–18,000',
+    duration: '6–10 Weeks',
+    badge: 'ENTERPRISE-GRADE FOR SMBs',
+    badgeColor: 'bg-slate/10 text-pearl',
+    bg: 'bg-slate text-pearl',
+    accentColor: 'text-amber',
+    cta: 'Apply for Transform',
+    description: "Your entire Amazon or Bol.com operation — automated, monitored, and running without you in the room.",
+    included: [
+      'Full operations audit',
+      '6–10 core workflows built + tested',
+      'Cross-platform integration (Amazon + Bol.com + Shopify)',
+      'Custom dashboard (optional: n8n + external BI tool)',
+      '90-day SLA with monthly check-in calls',
+      'Named account manager',
+      'EU AI Act compliance documentation',
+    ],
+    whoFor: 'Sellers doing 200+ orders/day across multiple marketplaces who need a system, not just a script.',
+  },
+];
+
+const comparisonFeatures = [
+  { feature: 'Workflow Audit', discover: true, automate: true, transform: true },
+  { feature: 'Automation Roadmap', discover: true, automate: true, transform: true },
+  { feature: 'Workflows Built', discover: '0', automate: '1–3', transform: '6–10' },
+  { feature: 'Sandbox Testing', discover: true, automate: true, transform: true },
+  { feature: 'Live Handover', discover: true, automate: true, transform: true },
+  { feature: 'Ongoing Support', discover: '30 days email', automate: '30 days SLA', transform: '90 days SLA + monthly calls' },
+  { feature: 'Cross-Platform Integration', discover: false, automate: false, transform: true },
+  { feature: 'Custom Dashboard', discover: false, automate: false, transform: true },
+  { feature: 'EU AI Act Compliance Docs', discover: false, automate: false, transform: true },
+];
+
+const faqs = [
+  {
+    q: 'Do I need technical skills to work with you?',
+    a: 'No. That\'s the point. We handle all the building, testing, and setup. You just approve and use the results. We speak plain English, not developer.',
+  },
+  {
+    q: 'How long until I see results?',
+    a: 'With the Automate package, your first workflow is typically live within 2–4 weeks. With Transform, you\'ll see your first automated process running within 3 weeks, with full delivery in 6–10 weeks.',
+  },
+  {
+    q: 'What happens if an automation breaks?',
+    a: 'You contact us, we fix it. All packages include a bug-fix period post-handover. For Automate and Transform, we have defined SLA response times. We don\'t disappear after the handover.',
+  },
+  {
+    q: 'Can you work with my existing tools?',
+    a: 'Almost certainly yes. We work with n8n, Make, Zapier, and custom integrations. If you have a specific tool in mind, tell us — we\'ll tell you if it\'s the right choice.',
+  },
+  {
+    q: "What's the difference between this and buying a SaaS tool?",
+    a: "SaaS tools are generic — you configure them to your workflow. We build to your workflow. You don't adapt to the software; the software adapts to you. And we stay to maintain it.",
+  },
+  {
+    q: 'Do you offer ongoing maintenance after the project?',
+    a: "Yes. Transform clients get a named account manager and monthly check-ins. We also offer ad-hoc support retainers for Discover and Automate clients who want ongoing coverage.",
+  },
+];
+---
+
+<Layout title="Services — AgentleConsulting"
+  description="Three automation engagement models for Amazon and Bol.com sellers. Straightforward pricing. No technical knowledge required.">
+
+  <!-- HERO -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="container-site">
+      <p class="section-label">Our Services</p>
+      <h1 class="font-heading font-bold text-4xl md:text-5xl text-slate mb-6 max-w-3xl leading-tight">
+        Automation That Actually Works — Built for Your Amazon or Bol.com Workflow
+      </h1>
+      <p class="text-lg text-slate/60 max-w-2xl leading-relaxed">
+        Three engagement models. Straightforward pricing. No technical knowledge required on your end.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="bg-stone py-16">
+    <div class="container-site">
+      <h2 class="font-heading font-bold text-2xl text-slate mb-8 text-center">Package Comparison</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-lg text-sm">
+          <thead>
+            <tr class="border-b-2 border-stone/80">
+              <th class="text-left py-3 pr-4 font-heading font-bold text-slate"></th>
+              {tiers.map(t => (
+                <th class="text-center py-3 px-4 font-heading font-bold text-slate">{t.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonFeatures.map(row => (
+              <tr class="border-b border-stone/50">
+                <td class="py-3 pr-4 text-slate/70">{row.feature}</td>
+                <td class="py-3 px-4 text-center">
+                  {typeof row.discover === 'boolean' ? (
+                    row.discover
+                      ? <svg class="w-5 h-5 text-sage mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      : <span class="text-slate/30">—</span>
+                  ) : <span class="text-slate font-medium">{row.discover}</span>}
+                </td>
+                <td class="py-3 px-4 text-center">
+                  {typeof row.automate === 'boolean' ? (
+                    row.automate
+                      ? <svg class="w-5 h-5 text-sage mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      : <span class="text-slate/30">—</span>
+                  ) : <span class="text-slate font-medium">{row.automate}</span>}
+                </td>
+                <td class="py-3 px-4 text-center">
+                  {typeof row.transform === 'boolean' ? (
+                    row.transform
+                      ? <svg class="w-5 h-5 text-sage mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      : <span class="text-slate/30">—</span>
+                  ) : <span class="text-slate font-medium">{row.transform}</span>}
+                </td>
+              </tr>
+            ))}
+            <tr>
+              <td class="pt-6 pr-4 text-slate/70"></td>
+              {tiers.map(t => (
+                <td class="pt-6 px-4 text-center">
+                  <a href={`#${t.id}`} class="btn-primary text-xs py-2 px-4">
+                    Get Started
+                  </a>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIER SECTIONS -->
+  {tiers.map((tier, i) => (
+    <section id={tier.id} class={`py-20 md:py-28 ${tier.bg}`}>
+      <div class="container-site">
+        <div class="max-w-3xl">
+          <!-- Badge + header -->
+          <span class={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 ${tier.badgeColor}`}>
+            {tier.badge}
+          </span>
+          <h2 class={`font-heading font-bold text-3xl md:text-4xl mb-2 ${tier.id === 'transform' ? 'text-pearl' : 'text-slate'}`}>
+            {tier.name} Package — {tier.price} · {tier.duration}
+          </h2>
+          <div class={`w-12 h-1 rounded-full mb-8 mt-4 ${tier.id === 'transform' ? 'bg-amber' : 'bg-amber'}`}></div>
+
+          <p class={`text-lg leading-relaxed mb-8 ${tier.id === 'transform' ? 'text-pearl/80' : 'text-slate/60'}`}>
+            {tier.description}
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- What's included -->
+            <div>
+              <h3 class={`font-semibold text-sm uppercase tracking-wider mb-4 ${tier.id === 'transform' ? 'text-pearl/40' : 'text-slate/40'}`}>What's Included</h3>
+              <ul class="space-y-3">
+                {tier.included.map(f => (
+                  <li class={`flex items-start gap-3 text-sm ${tier.id === 'transform' ? 'text-pearl/80' : 'text-slate/70'}`}>
+                    <svg class={`w-5 h-5 ${tier.accentColor} mt-0.5 shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              {tier.examples && (
+                <>
+                  <h3 class={`font-semibold text-sm uppercase tracking-wider mb-4 ${tier.id === 'transform' ? 'text-pearl/40' : 'text-slate/40'}`}>Example Automations</h3>
+                  <ul class="space-y-3 mb-8">
+                    {tier.examples.map(ex => (
+                      <li class={`flex items-start gap-3 text-sm ${tier.id === 'transform' ? 'text-pearl/80' : 'text-slate/70'}`}>
+                        <svg class={`w-4 h-4 ${tier.accentColor} mt-1 shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg>
+                        {ex}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              <div class={`rounded-xl p-6 ${tier.id === 'transform' ? 'bg-slate-light/20' : 'bg-white border border-stone'}`}>
+                <p class={`text-xs font-semibold uppercase tracking-wider mb-2 ${tier.id === 'transform' ? 'text-pearl/40' : 'text-slate/40'}`}>Who It's For</p>
+                <p class={`text-sm leading-relaxed ${tier.id === 'transform' ? 'text-pearl/80' : 'text-slate/70'}`}>{tier.whoFor}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <a href="/contact" class={`btn-primary text-base ${tier.id === 'transform' ? 'bg-amber hover:bg-amber-dark border-0' : ''}`}>
+              {tier.cta} →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- FAQ -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="container-site max-w-3xl">
+      <h2 class="font-heading font-bold text-3xl text-slate mb-10">Common Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="group bg-white rounded-xl border border-stone overflow-hidden">
+            <summary class={`flex items-center justify-between gap-4 p-6 cursor-pointer list-none ${i === 0 ? '' : ''}`}>
+              <span class="font-semibold text-slate text-sm md:text-base">{faq.q}</span>
+              <svg class="w-5 h-5 text-slate/40 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-sm text-slate/60 leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <p class="text-center mt-10 text-sm text-slate/50">
+        Still have questions? <a href="/contact" class="text-sage underline">Let's talk →</a>
+      </p>
+    </div>
+  </section>
+</Layout>

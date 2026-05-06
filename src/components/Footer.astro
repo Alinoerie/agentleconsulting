@@ -1,0 +1,101 @@
+---
+const services = [
+  { label: 'Discovery Sprint', href: '/services#discover' },
+  { label: 'Automate Package', href: '/services#automate' },
+  { label: 'Transform Package', href: '/services#transform' },
+];
+
+const company = [
+  { label: 'About', href: '/about' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const legal = [
+  { label: 'Privacy Policy', href: '/legal/privacy' },
+  { label: 'Terms of Service', href: '/legal/terms' },
+  { label: 'Cookie Policy', href: '/legal/cookies' },
+];
+---
+
+<footer class="bg-slate text-pearl">
+  <div class="container-site py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <!-- Col 1: Logo + tagline -->
+      <div class="md:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 28C6 28 12 8 22 10C32 12 30 22 30 22C30 22 28 14 22 14C16 14 18 22 18 22"
+                  stroke="#6B9E78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="26" cy="10" r="3" fill="#D4956A"/>
+          </svg>
+          <span class="font-heading font-bold text-pearl">AgentleConsulting</span>
+        </a>
+        <p class="text-pearl/60 text-sm leading-relaxed">
+          Automation with a Human Hand.
+        </p>
+        <p class="text-pearl/40 text-xs mt-4">
+          &copy; 2026 AgentleConsulting.<br/>Made with care in Amsterdam.
+        </p>
+      </div>
+
+      <!-- Col 2: Services -->
+      <div>
+        <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-pearl/40 mb-4">Services</h4>
+        <ul class="space-y-3">
+          {services.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-pearl/70 hover:text-sage transition-colors">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3: Company -->
+      <div>
+        <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-pearl/40 mb-4">Company</h4>
+        <ul class="space-y-3">
+          {company.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-pearl/70 hover:text-sage transition-colors">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 4: Connect -->
+      <div>
+        <h4 class="font-heading font-semibold text-sm uppercase tracking-wider text-pearl/40 mb-4">Connect</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://linkedin.com/company/agentleconsulting" target="_blank" rel="noopener noreferrer"
+               class="text-sm text-pearl/70 hover:text-sage transition-colors flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hello@agentleconsulting.com"
+               class="text-sm text-pearl/70 hover:text-sage transition-colors">hello@agentleconsulting.com</a>
+          </li>
+          <li class="pt-2">
+            <a href="/contact" class="btn-primary text-sm py-2 px-4">Book a Call</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-pearl/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex flex-wrap gap-6">
+        {legal.map(link => (
+          <a href={link.href} class="text-xs text-pearl/40 hover:text-pearl/70 transition-colors">{link.label}</a>
+        ))}
+      </div>
+      <p class="text-xs text-pearl/30">Amsterdam, Netherlands &bull; VAT NL0048.72.4.12.B.01</p>
+    </div>
+  </div>
+</footer>

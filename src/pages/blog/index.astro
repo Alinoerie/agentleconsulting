@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: 'How to Automate Inventory Management on n8n',
+    excerpt: 'A step-by-step guide to building a real-time inventory sync between Amazon, Bol.com, and your warehouse using n8n workflows. Includes the full workflow template and setup screenshots.',
+    slug: 'automate-inventory-n8n',
+    date: '2026-04-12',
+    readTime: '8 min read',
+    tag: 'Tutorial',
+  },
+  {
+    title: 'The 5 Amazon Tasks You Should Automate First',
+    excerpt: 'Not all automation is equal. These five workflows deliver the biggest ROI for the least setup effort — here\'s the order we recommend based on 30+ client implementations.',
+    slug: 'amazon-automation-priority',
+    date: '2026-03-28',
+    readTime: '6 min read',
+    tag: 'Guide',
+  },
+  {
+    title: 'Bol.com vs Amazon: Automation Platforms Compared',
+    excerpt: 'Both marketplaces have distinct APIs, quirks, and automation opportunities. Here\'s how to approach each one — and where the overlaps create the biggest wins.',
+    slug: 'bol-amazon-automation-compared',
+    date: '2026-03-10',
+    readTime: '10 min read',
+    tag: 'Comparison',
+  },
+  {
+    title: 'Why Your Repricing Strategy Is Losing You Money',
+    excerpt: 'Manual repricing doesn\'t just cost you time — it costs you margin. Here\'s the data on why sellers who reprice manually leave an average of 11% on the table.',
+    slug: 'repricing-strategy-money',
+    date: '2026-02-20',
+    readTime: '7 min read',
+    tag: 'Strategy',
+  },
+  {
+    title: 'The True Cost of Manual Order Processing',
+    excerpt: 'We tracked one seller\'s order processing for a month. Here\'s what 4 hours/day of copy-paste actually costs — in time, errors, and missed opportunities.',
+    slug: 'true-cost-manual-order-processing',
+    date: '2026-02-05',
+    readTime: '5 min read',
+    tag: 'Analysis',
+  },
+  {
+    title: 'n8n vs Make vs Zapier: Which Automation Tool Should You Use?',
+    excerpt: 'A practical breakdown of the three most popular no-code automation platforms — for Amazon/Bol.com sellers specifically. Spoiler: the "best" tool depends entirely on your use case.',
+    slug: 'n8n-vs-make-vs-zapier',
+    date: '2026-01-18',
+    readTime: '12 min read',
+    tag: 'Comparison',
+  },
+];
+
+const tags = ['All', 'Tutorial', 'Guide', 'Comparison', 'Strategy', 'Analysis'];
+---
+
+<Layout title="Blog — AgentleConsulting"
+  description="Practical automation insights for Amazon and Bol.com sellers. Tutorials, guides, and strategic analysis from the Agentle team.">
+
+  <!-- HERO -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="container-site">
+      <p class="section-label">From the Blog</p>
+      <h1 class="font-heading font-bold text-4xl md:text-5xl text-slate mb-4">Automation Insights for Sellers</h1>
+      <p class="text-lg text-slate/60 max-w-xl">Tutorials, guides, and strategic analysis — written for Amazon and Bol.com sellers who want to automate without a dev team.</p>
+    </div>
+  </section>
+
+  <!-- BLOG LISTING -->
+  <section class="bg-stone py-16 md:py-24">
+    <div class="container-site">
+      <!-- Tag filter (visual only — JS-powered) -->
+      <div class="flex flex-wrap gap-2 mb-10" id="tag-filters">
+        {tags.map((tag, i) => (
+          <button data-tag={tag}
+                  class:list={[
+                    'text-xs font-semibold px-4 py-1.5 rounded-full border transition-colors',
+                    i === 0
+                      ? 'bg-sage text-pearl border-sage'
+                      : 'bg-transparent text-slate/60 border-stone hover:border-sage hover:text-sage'
+                  ]}>
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map(post => (
+          <a href={`/blog/${post.slug}`}
+             class="blog-card group block bg-cream rounded-2xl overflow-hidden border border-stone hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+             data-tag={post.tag}>
+            <div class="bg-stone h-44 flex items-center justify-center">
+              <span class="text-xs font-semibold px-3 py-1 bg-sage/10 text-sage rounded-full border border-sage/20">{post.tag}</span>
+            </div>
+            <div class="p-6">
+              <p class="text-xs text-slate/40 mb-2">{post.date} · {post.readTime}</p>
+              <h2 class="font-heading font-bold text-lg text-slate mb-2 group-hover:text-sage transition-colors leading-snug">{post.title}</h2>
+              <p class="text-sm text-slate/55 leading-relaxed line-clamp-3">{post.excerpt}</p>
+              <p class="text-sm text-sage font-medium mt-4">Read →</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="bg-sage py-16">
+    <div class="container-site text-center max-w-xl">
+      <h2 class="font-heading font-bold text-2xl text-pearl mb-3">Get New Posts in Your Inbox</h2>
+      <p class="text-pearl/70 text-sm mb-6">No spam. One email per month when we publish. Unsubscribe anytime.</p>
+      <form class="flex gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-pearl/80 text-sm py-2\'>Thanks! You\'re on the list.</p>'">
+        <input type="email" required placeholder="your@email.com"
+               class="flex-1 px-4 py-2.5 rounded-lg bg-pearl/10 border border-pearl/20 text-pearl placeholder-pearl/40 text-sm focus:outline-none focus:ring-2 focus:ring-amber/50" />
+        <button type="submit" class="btn-primary text-sm shrink-0">Subscribe</button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const filters = document.getElementById('tag-filters');
+  const cards = document.querySelectorAll('.blog-card');
+
+  filters?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('button');
+    if (!btn) return;
+    const tag = btn.dataset.tag;
+
+    // Update active filter button
+    filters.querySelectorAll('button').forEach(b => {
+      b.classList.remove('bg-sage', 'text-pearl', 'border-sage');
+      b.classList.add('bg-transparent', 'text-slate/60', 'border-stone');
+    });
+    btn.classList.add('bg-sage', 'text-pearl', 'border-sage');
+    btn.classList.remove('bg-transparent', 'text-slate/60', 'border-stone');
+
+    // Filter cards
+    cards.forEach(card => {
+      const cardTag = (card as HTMLElement).dataset.tag;
+      if (tag === 'All' || cardTag === tag) {
+        (card as HTMLElement).style.display = '';
+      } else {
+        (card as HTMLElement).style.display = 'none';
+      }
+    });
+  });
+</script>

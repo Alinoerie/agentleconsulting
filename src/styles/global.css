@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-sage: #6B9E78;
+  --color-sage-light: #8BB896;
+  --color-sage-dark: #558060;
+  --color-amber: #D4956A;
+  --color-amber-light: #E0AA7D;
+  --color-amber-dark: #C07A4E;
+  --color-slate: #2D3A45;
+  --color-slate-light: #3D4F5C;
+  --color-slate-dark: #1E2830;
+  --color-cream: #F8F5F0;
+  --color-stone: #EDE9E2;
+  --color-pearl: #FEFCFA;
+
+  --font-family-heading: 'Fraunces', Georgia, serif;
+  --font-family-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  color: var(--color-slate);
+  background-color: var(--color-cream);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-family-heading);
+}
+
+/* Component classes */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-amber);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: var(--color-amber-dark);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-sage);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+.btn-secondary:hover {
+  background-color: var(--color-sage-dark);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--color-sage);
+  color: var(--color-sage);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  background-color: var(--color-sage);
+  color: white;
+}
+
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--color-pearl);
+  color: var(--color-pearl);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-outline-dark:hover {
+  background-color: var(--color-pearl);
+  color: var(--color-slate);
+}
+
+.section-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-amber);
+  margin-bottom: 1rem;
+}
+
+.container-site {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .container-site { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .container-site { padding-left: 2rem; padding-right: 2rem; }
+}

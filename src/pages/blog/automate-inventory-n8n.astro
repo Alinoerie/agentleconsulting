@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="How to Automate Inventory Management on n8n — AgentleConsulting Blog"
+  description="A step-by-step guide to building a real-time inventory sync between Amazon, Bol.com, and your warehouse using n8n workflows."
+  ogImage="/blog/og-inventory-n8n.png">
+
+  <article class="bg-cream">
+    <div class="container-site max-w-3xl py-20 md:py-28">
+      <!-- Back link -->
+      <a href="/blog" class="inline-flex items-center gap-2 text-sm text-sage hover:text-sage-dark mb-8 transition-colors">
+        ← Back to Blog
+      </a>
+
+      <!-- Header -->
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-xs font-semibold px-3 py-1 bg-sage/10 text-sage rounded-full">Tutorial</span>
+          <span class="text-xs text-slate/40">2026-04-12 · 8 min read</span>
+        </div>
+        <h1 class="font-heading font-extrabold text-4xl md:text-5xl text-slate leading-tight mb-6">
+          How to Automate Inventory Management on n8n
+        </h1>
+        <p class="text-lg text-slate/60 leading-relaxed">
+          A step-by-step guide to building a real-time inventory sync between Amazon, Bol.com, and your warehouse using n8n workflows.
+        </p>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none text-slate/75">
+        <p>
+          Manual inventory management is one of the biggest time sinks for multi-channel sellers. Every hour you spend copy-pasting stock counts is an hour you're not spent sourcing new products or improving listings.
+        </p>
+        <p>
+          In this guide, we'll build a workflow in n8n that automatically syncs your inventory levels across Amazon, Bol.com, and your warehouse management system — in real time, without any manual intervention.
+        </p>
+
+        <h2>What You'll Need</h2>
+        <ul>
+          <li>An n8n instance (self-hosted or cloud)</li>
+          <li>API access to Amazon Seller Central (SP-API)</li>
+          <li>Bol.com Open API access</li>
+          <li>Your warehouse's API or spreadsheet endpoint</li>
+        </ul>
+
+        <h2>The Workflow Architecture</h2>
+        <p>
+          Our workflow runs on a schedule trigger (every 15 minutes) and follows this logic:
+        </p>
+        <ol>
+          <li>Fetch current stock levels from your warehouse</li>
+          <li>Calculate available-to-list (total stock minus reserved orders)</li>
+          <li>Push updated quantities to Amazon and Bol.com</li>
+          <li>Send a summary notification to your team</li>
+        </ol>
+
+        <h2>Step 1: Set Up the Trigger</h2>
+        <p>
+          Create a new workflow in n8n and add a <strong>Cron</strong> node. Set it to trigger every 15 minutes:
+        </p>
+        <pre class="bg-stone text-slate text-sm p-4 rounded-lg overflow-x-auto font-mono"><code>Cron: 0,15,30,45 * * * *</code></pre>
+
+        <h2>Step 2: Fetch Warehouse Stock</h2>
+        <p>
+          Add an <strong>HTTP Request</strong> node to pull data from your warehouse. If your warehouse uses a REST API, configure it like this:
+        </p>
+        <pre class="bg-stone text-slate text-sm p-4 rounded-lg overflow-x-auto font-mono"><code>Method: GET
+URL: https://api.your-warehouse.com/v1/stock
+Headers:
+  Authorization: Bearer {'{{'}$env.WAREHOUSE_API_KEY{'}}'}</code></pre>
+
+        <h2>Step 3: Transform and Filter</h2>
+        <p>
+          Use a <strong>Code</strong> node to transform the warehouse response into the format each platform expects. Keep only SKUs that have changed since the last sync to avoid unnecessary API calls.
+        </p>
+
+        <h2>Step 4: Push to Amazon and Bol.com</h2>
+        <p>
+          Add parallel <strong>HTTP Request</strong> nodes for each platform. Set them to PATCH only the changed SKUs. Both platforms rate-limit their inventory endpoints, so the 15-minute cadence keeps you within safe limits.
+        </p>
+
+        <h2>Step 5: Error Handling</h2>
+        <p>
+          Always wrap platform push nodes in an <strong>Error Trigger</strong> branch. If Amazon's API returns a 429 (rate limit), the workflow should pause and retry on the next cycle rather than fail silently.
+        </p>
+
+        <div class="bg-sage/5 border border-sage/20 rounded-xl p-6 my-8">
+          <h3 class="font-heading font-bold text-sage mb-2">💡 Pro Tip</h3>
+          <p class="text-sm text-slate/70">
+            For sellers with more than 1,000 active SKUs, consider batching your updates. Both Amazon and Bol.com offer bulk inventory endpoints that are significantly faster than individual SKU updates.
+          </p>
+        </div>
+
+        <h2>What This Saves You</h2>
+        <p>
+          On average, our clients report saving 3–5 hours per week on inventory management alone. But the real value is in accuracy: automated syncs eliminate the overselling and stockout errors that damage your metrics and reputation.
+        </p>
+
+        <p>
+          Want us to build this for you? <a href="/contact" class="text-sage font-semibold">Book a discovery call →</a> We'll assess your specific setup and tell you exactly what it would take.
+        </p>
+      </div>
+
+      <!-- Author + CTA -->
+      <div class="mt-16 pt-8 border-t border-stone">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-sage/10 rounded-full flex items-center justify-center">
+              <span class="font-heading font-bold text-sage text-sm">AC</span>
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-slate">AgentleConsulting</p>
+              <p class="text-xs text-slate/40">Automation Engineering Team</p>
+            </div>
+          </div>
+          <a href="/contact" class="btn-primary text-sm py-2.5 px-5">Talk to Us →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

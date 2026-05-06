@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'We Build, Not Just Advise',
+    body: "No PDF roadmaps. We open our laptops. We build your automation, test it, and hand over something that works — not a document you'll never read.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+    title: 'Done-For-You Model',
+    body: "You approve. We build. You get the keys. Simple. We don't leave you with a half-configured tool and a shrug.",
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: '24h Response SLA',
+    body: "If something breaks, you reach us and we fix it. We don't disappear after handover — our name is on the system.",
+  },
+];
+
+const whoFor = [
+  'Amazon sellers doing 50–500 orders/day',
+  'Bol.com sellers at scale',
+  'Multi-channel operators (Amazon + Bol.com + Shopify)',
+  'Sellers with €500K–€20M revenue',
+  'Based in the EU',
+  'No internal dev team',
+];
+
+const notFor = [
+  'Enterprise corporations (we don\'t do ERP migrations)',
+  'Sellers who want a SaaS tool they manage themselves',
+  'One-time ad campaigns or PPC management',
+];
+---
+
+<Layout title="About — AgentleConsulting"
+  description="We started AgentleConsulting because we were tired of watching talented sellers drown in work that software should handle.">
+
+  <!-- HERO -->
+  <section class="bg-sage py-20 md:py-32 text-pearl">
+    <div class="container-site max-w-3xl">
+      <p class="section-label text-amber/70">Our Story</p>
+      <h1 class="font-heading font-extrabold text-4xl md:text-5xl leading-tight mb-8">
+        We Started Agentle Because We Were Tired of Watching Good Sellers Drown in Work That Software Should Handle
+      </h1>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="container-site">
+      <div class="max-w-3xl">
+        <div class="prose prose-lg">
+          <p class="text-slate/80 leading-relaxed text-lg mb-6">
+            If you're selling on Amazon or Bol.com, you didn't get into e-commerce to spend your evenings copy-pasting inventory numbers into spreadsheets. You got into it because you saw a product people wanted, and you wanted to build something real.
+          </p>
+          <p class="text-slate/80 leading-relaxed text-lg mb-6">
+            But as your business grows, the work grows with it — often faster. The 5 orders a day you once processed manually become 200. The single listing becomes 40. And suddenly you're running the business, but you've stopped enjoying it.
+          </p>
+          <p class="text-slate/80 leading-relaxed text-lg mb-6">
+            <strong>That's the problem we solve.</strong> We build the automation systems that make a growing seller's life manageable again — not with generic tools, but with systems built for your specific workflow. We implement, we test, we hand over something that works.
+          </p>
+          <p class="text-slate/80 leading-relaxed text-lg mb-6">
+            We believe automation should serve people, not replace them. The goal isn't to make humans irrelevant — it's to give them their time back.
+          </p>
+          <p class="text-slate/80 leading-relaxed text-lg font-semibold">
+            That's Agentle. <span class="text-sage">Automation with a human hand on the wheel.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="bg-stone py-20 md:py-28">
+    <div class="container-site">
+      <h2 class="font-heading font-bold text-3xl text-slate mb-12">Who We're Built For</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+        <div class="bg-cream rounded-2xl p-8">
+          <h3 class="font-heading font-bold text-lg text-slate mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Perfect Fit
+          </h3>
+          <ul class="space-y-2">
+            {whoFor.map(item => (
+              <li class="text-sm text-slate/70 flex items-start gap-2">
+                <svg class="w-4 h-4 text-sage mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-cream rounded-2xl p-8">
+          <h3 class="font-heading font-bold text-lg text-slate mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-slate/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Not For You If
+          </h3>
+          <ul class="space-y-2">
+            {notFor.map(item => (
+              <li class="text-sm text-slate/50 flex items-start gap-2">
+                <svg class="w-4 h-4 text-slate/30 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="container-site">
+      <div class="text-center mb-16">
+        <p class="section-label">How We Work</p>
+        <h2 class="font-heading font-bold text-3xl text-slate">What Makes Us Different</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {values.map(v => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-sage/10 rounded-2xl flex items-center justify-center mx-auto mb-5 text-sage" set:html={v.icon}></div>
+            <h3 class="font-heading font-bold text-xl text-slate mb-3">{v.title}</h3>
+            <p class="text-sm text-slate/60 leading-relaxed">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PLACEHOLDER -->
+  <section class="bg-stone py-20 md:py-28">
+    <div class="container-site">
+      <h2 class="font-heading font-bold text-3xl text-slate mb-4">The Team</h2>
+      <p class="text-slate/60 mb-12 max-w-2xl">
+        We're a small team of automation engineers and Amazon seller veterans. We've been in your shoes — we know what breaks a seller's day.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl">
+        {[1, 2, 3].map(i => (
+          <div class="bg-cream rounded-2xl p-8 text-center">
+            <div class="w-24 h-24 bg-stone rounded-full mx-auto mb-4 flex items-center justify-center">
+              <span class="text-slate/30 font-heading font-bold text-2xl">T{i}</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-slate">Team Member {i}</h3>
+            <p class="text-sm text-slate/50 mb-3">Role</p>
+            <a href="#" class="inline-flex items-center gap-1 text-sage text-sm hover:text-sage-dark transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="bg-sage py-20 md:py-28">
+    <div class="container-site text-center">
+      <h2 class="font-heading font-bold text-3xl text-pearl mb-4">Still deciding if we're the right fit?</h2>
+      <p class="text-pearl/70 mb-8">Book a free 20-minute call — no pitch, just a conversation.</p>
+      <a href="/contact" class="btn-primary text-base">Book a Free Discovery Call →</a>
+    </div>
+  </section>
+</Layout>
